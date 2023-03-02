@@ -403,7 +403,7 @@ var allData = {
           </div>
 
           <div class="">
-              <button title="Show details" class="btn text-danger fs-4 rounded"><i class="bi bi-arrow-right"></i></button>
+              <button title="Show details" class="btn  text-danger fs-4 rounded" data-bs-toggle="modal" data-bs-target="#detailsModal"><i class="bi bi-arrow-right"></i></button>
           </div>
       </div>
         </div>
