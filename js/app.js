@@ -349,15 +349,16 @@ var allData = {
   };
 
 
-  const loadAiCards = async() => {
+  const loadAiCards = async(cardsLimited = false ) => {
     toggleLoading(true);
     const res = await fetch(url);
     const data = await res.json();
-    displayAiCards(data.data.tools);
+    displayAiCards(data.data.tools, cardsLimited);
   };
 
-  const displayAiCards = cardsData => {
+  const displayAiCards = (cardsData , isCardsShowingLimited) => {
     const cardContainer = document.getElementById('card-container');
+    cardContainer.innerHTML = " ";
 
     /* ---------Sort by Date Button showing condition---------- */
     const sortByDateBtn = document.getElementById('sort-btn');
@@ -367,7 +368,20 @@ var allData = {
     else{
         sortByDateBtn.classList.add('d-none')
     }
-    cardsData.forEach( cardData => {
+
+    /* --------- Cards data limit and See more button condition---------- */
+    const seeMoreBtn = document.getElementById('see-more-btn');
+    let allCarsData = cardsData;
+    if( isCardsShowingLimited !== true){
+         allCarsData = cardsData.slice(0, 6);
+         seeMoreBtn.classList.remove('d-none');
+
+    }
+    else{
+         allCarsData = cardsData;
+         seeMoreBtn.classList.add('d-none');
+    }
+    allCarsData.forEach( cardData => {
         console.log(cardData);
         const cardDiv = document.createElement('div');
         cardDiv.classList.add('col');
@@ -413,8 +427,12 @@ var allData = {
     else{
         spinner.classList.add('d-none')
     }
- }
+ };
 
+ /* ===== Spinner Loading Function ===== */
+  const showAllCards = value => {
+    loadAiCards(value);
+  }
   /* Initially Function Calling */
   loadAiCards()
 
