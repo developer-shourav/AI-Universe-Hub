@@ -362,16 +362,26 @@ var allData = {
         const cardDiv = document.createElement('div');
         cardDiv.classList.add('col');
         cardDiv.innerHTML = `
-        <div class="card p-3 h-100">
+        <div class="card p-3 pb-0 h-100">
         <img src="${cardData.image ? cardData.image : "Image Not found" }" class="card-img-top h-75 rounded-3" alt="...">
         <div class=" py-4">
           <h5 class="card-title fw-bold">Features</h5>
-          <ol class="ms-0 ps-3 fw-semibold text-secondary-emphasis">
+          <ol class="ms-0 ps-3 pb-2 fw-semibold text-dark-emphasis">
           <li>${cardData.features[0]}</li>
           <li>${cardData.features[1]}</li>
           <li>${cardData.features[2]}</li>
-          
           </ol>
+          <hr>
+          <div class="d-flex align-items-center justify-content-between">
+          <div class="">
+              <h5 class="text-dark fw-bold">${cardData.name}</h5>
+              <p class="fw-bold text-dark-emphasis"><i class="bi bi-calendar3"></i> ${cardData.published_in}</p>
+          </div>
+
+          <div class="">
+              <button title="Show details" class="btn text-danger fs-4 rounded"><i class="bi bi-arrow-right"></i></button>
+          </div>
+      </div>
         </div>
       </div>
         `;
@@ -381,5 +391,6 @@ var allData = {
     })
   };
 
+  /* Initially Function Calling */
   loadAiCards()
 
