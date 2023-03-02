@@ -358,14 +358,20 @@ var allData = {
   const displayAiCards = cardsData => {
     const cardContainer = document.getElementById('card-container');
     cardsData.forEach( cardData => {
+        console.log(cardData);
         const cardDiv = document.createElement('div');
         cardDiv.classList.add('col');
         cardDiv.innerHTML = `
-        <div class="card h-100">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        <div class="card p-3 h-100">
+        <img src="${cardData.image ? cardData.image : "Image Not found" }" class="card-img-top h-75 rounded-3" alt="...">
+        <div class=" py-4">
+          <h5 class="card-title fw-bold">Features</h5>
+          <ol class="ms-0 ps-3 fw-semibold text-secondary-emphasis">
+          <li>${cardData.features[0]}</li>
+          <li>${cardData.features[1]}</li>
+          <li>${cardData.features[2]}</li>
+          
+          </ol>
         </div>
       </div>
         `;
@@ -377,4 +383,3 @@ var allData = {
 
   loadAiCards()
 
-  
