@@ -357,7 +357,7 @@ var allData = {
 
   const displayAiCards = cardsData => {
     const cardContainer = document.getElementById('card-container');
-    cardsData.forEach( cardData => {
+    cardsData.slice(0,6).forEach( cardData => {
         console.log(cardData);
         const cardDiv = document.createElement('div');
         cardDiv.classList.add('col');
