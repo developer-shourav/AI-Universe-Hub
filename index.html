@@ -20,14 +20,16 @@
         <!-- -----------Web Heading---------------- -->
         <h1  class="text-center mt-5 mb-4 fw-bold">AI Universe Hub</h1>
     </header>
-    <main class="container">
-        <div class="text-center">
+    <main id="main-container" class="container">
+        <div id="sort-btn"  class="text-center d-none">
             <!-- ----------- Sort By Date Button---------------- -->
-            <button class="btn btn-danger fw-bold py-3 px-4 rounded-4 ">Sort By Date</button>
+            <button  class="btn btn-danger fw-bold  py-3 px-4 rounded-4 ">Sort By Date</button>
         </div>
          
         <!------------- Main Content Section---------------- -->
         <section class="ai-main-container my-5">
+           
+
             <div id="card-container" class="row row-cols-1 row-cols-md-3 g-3">
 
                  
@@ -41,6 +43,13 @@
         </section>
        
     </main>
+
+     <!-- ------Spinner ------ -->
+     <div id="spinner" class="d-none">
+        <div  class="text-center">
+            <img class="text-center " src="./img/spinner.gif" alt="">
+        </div>
+    </div>
 
     <!-- -----------Vanilla Js file---------------- -->
     <script src="js/app.js"></script>

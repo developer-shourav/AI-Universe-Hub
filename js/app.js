@@ -350,6 +350,7 @@ var allData = {
 
 
   const loadAiCards = async() => {
+    toggleLoading(true);
     const res = await fetch(url);
     const data = await res.json();
     displayAiCards(data.data.tools);
@@ -357,7 +358,16 @@ var allData = {
 
   const displayAiCards = cardsData => {
     const cardContainer = document.getElementById('card-container');
-    cardsData.slice(0,6).forEach( cardData => {
+
+    /* ---------Sort by Date Button showing condition---------- */
+    const sortByDateBtn = document.getElementById('sort-btn');
+    if(cardsData.length >= 1){
+        sortByDateBtn.classList.remove('d-none');
+    }
+    else{
+        sortByDateBtn.classList.add('d-none')
+    }
+    cardsData.forEach( cardData => {
         console.log(cardData);
         const cardDiv = document.createElement('div');
         cardDiv.classList.add('col');
@@ -388,8 +398,22 @@ var allData = {
 
         cardContainer.appendChild(cardDiv);
 
+        /* =======Stop Spinner========== */
+        toggleLoading(false)
+
     })
   };
+
+ /* ===== Spinner Loading Function ===== */
+ const toggleLoading = isLoading => {
+    const spinner = document.getElementById('spinner');
+    if(isLoading){
+        spinner.classList.remove('d-none');
+    }
+    else{
+        spinner.classList.add('d-none')
+    }
+ }
 
   /* Initially Function Calling */
   loadAiCards()
