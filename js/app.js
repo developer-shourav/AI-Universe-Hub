@@ -11,7 +11,6 @@
     const cardContainer = document.getElementById('card-container');
     cardContainer.innerHTML = " ";
 
-    console.log(cardsData);
 
     /* ============= Sort AI Card According to date =========== */
     let allCarsData = cardsData;
@@ -49,7 +48,7 @@
         const cardDiv = document.createElement('div');
         cardDiv.classList.add('col');
         cardDiv.innerHTML = `
-        <div class="card p-3 pb-0 h-100">
+        <div class="card shadow p-3 pb-0 h-100">
         <img src="${cardData.image ? cardData.image : "Image Not found" }" class="card-img-top h-75 rounded-3" alt="...">
         <div class=" py-4">
           <h5 class="card-title fw-bold">Features</h5>
