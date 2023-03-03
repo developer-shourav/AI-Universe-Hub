@@ -431,7 +431,13 @@ var allData = {
     const modalTitle = document.getElementById('modal-title');
     modalTitle.innerText = `${details?.description}`;
     const detailsModalImg = document.getElementById('modal-img');
-    detailsModalImg.setAttribute('src', `${details?.image_link[0]}`)
+    detailsModalImg.setAttribute('src', `${details?.image_link[0]}`);
+    const aiInput = document.getElementById('ai-input');
+    aiInput.innerText = `${details.input_output_examples[0].input ? details.input_output_examples[0].input : 'Can you give any example?'}`; 
+
+    const aiOutput = document.getElementById('ai-output');
+    aiOutput.innerText = `${details.input_output_examples[0].output ? details.input_output_examples[0].output : 'No! Not Yet! Take a break!!!'}`; 
+
 
   }
 
