@@ -391,9 +391,9 @@ var allData = {
         <div class=" py-4">
           <h5 class="card-title fw-bold">Features</h5>
           <ol class="ms-0 ps-3 pb-2 fw-semibold text-dark-emphasis">
-          <li>${cardData.features[0]}</li>
-          <li>${cardData.features[1]}</li>
-          <li>${cardData.features[2]}</li>
+          <li>${cardData.features[0] ? cardData.features[0] : "Feature not found "}</li>
+          <li>${cardData.features[1] ? cardData.features[1] : "Feature not found "}</li>
+          <li>${cardData.features[2] ? cardData.features[2] : "Feature not found "}</li>
           </ol>
           <hr>
           <div class="d-flex align-items-center justify-content-between">
@@ -436,3 +436,6 @@ var allData = {
   /* Initially Function Calling */
   loadAiCards()
 
+
+
+  
