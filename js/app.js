@@ -1,7 +1,7 @@
 
 
 var url = `https://openapi.programming-hero.com/api/ai/tools`;
-var specificUrl = `https://openapi.programming-hero.com/api/ai/tool/01`;
+
 
 
 var allData = {
@@ -382,7 +382,6 @@ var allData = {
          seeMoreBtn.classList.add('d-none');
     }
     allCarsData.forEach( cardData => {
-        console.log(cardData);
         const cardDiv = document.createElement('div');
         cardDiv.classList.add('col');
         cardDiv.innerHTML = `
@@ -403,7 +402,7 @@ var allData = {
           </div>
 
           <div class="">
-              <button title="Show details" class="btn  text-danger fs-4 rounded" data-bs-toggle="modal" data-bs-target="#detailsModal"><i class="bi bi-arrow-right"></i></button>
+              <button title="Show details" onclick="loadDetails('${cardData.id}')" class="btn  text-danger fs-4 rounded" data-bs-toggle="modal" data-bs-target="#detailsModal"><i class="bi bi-arrow-right"></i></button>
           </div>
       </div>
         </div>
@@ -417,6 +416,14 @@ var allData = {
 
     })
   };
+
+
+  const loadDetails = async (id) => {
+    const detailsUrl = `https://openapi.programming-hero.com/api/ai/tool/${id}`;
+    const res = await fetch(detailsUrl);
+    const data = await res.json();
+    console.log(data.data);
+  }
 
  /* ===== Spinner Loading Function ===== */
  const toggleLoading = isLoading => {
@@ -438,4 +445,3 @@ var allData = {
 
 
 
-  
