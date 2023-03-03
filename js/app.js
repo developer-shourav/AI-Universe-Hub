@@ -430,6 +430,9 @@ var allData = {
         console.log(details);
     const modalTitle = document.getElementById('modal-title');
     modalTitle.innerText = `${details?.description}`;
+    const detailsModalImg = document.getElementById('modal-img');
+    detailsModalImg.setAttribute('src', `${details?.image_link[0]}`)
+
   }
 
  /* ===== Spinner Loading Function ===== */
