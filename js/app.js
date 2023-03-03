@@ -109,7 +109,22 @@
      thirdFeature.innerText = `${details?.features['3']?.feature_name}`;
 
    /* ========= Integrations ======== */
-   console.log(details.integrations.length);
+   const integrateData = details.integrations;
+   console.log(integrateData);
+   const listcontainer = document.getElementById('int-list-container');
+   listcontainer.innerHTML = " ";
+   if(integrateData.length > 0 ){
+    integrateData.forEach(int => {
+          const newLi = document.createElement('li');
+          newLi.innerText = `${int}`;
+
+          listcontainer.appendChild(newLi);
+    })
+   }
+
+   else{
+    listcontainer.innerHTML = "No data Found";
+   }
 
   }
 
