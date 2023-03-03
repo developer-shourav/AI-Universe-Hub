@@ -390,9 +390,9 @@ var allData = {
         <div class=" py-4">
           <h5 class="card-title fw-bold">Features</h5>
           <ol class="ms-0 ps-3 pb-2 fw-semibold text-dark-emphasis">
-          <li>${cardData.features[0] ? cardData.features[0] : "Feature not found "}</li>
-          <li>${cardData.features[1] ? cardData.features[1] : "Feature not found "}</li>
-          <li>${cardData.features[2] ? cardData.features[2] : "Feature not found "}</li>
+          <li>${cardData.features[0] ? cardData.features[0] : "<span class='text-warning-emphasis'>Feature not found</span> "}</li>
+          <li>${cardData.features[1] ? cardData.features[1] : "<span class='text-warning-emphasis'>Feature not found</span> "}</li>
+          <li>${cardData.features[2] ? cardData.features[2] : "<span class='text-warning-emphasis fw-bold'>Feature not found</span> "}</li>
           </ol>
           <hr>
           <div class="d-flex align-items-center justify-content-between">
@@ -432,11 +432,21 @@ var allData = {
     modalTitle.innerText = `${details?.description}`;
     const detailsModalImg = document.getElementById('modal-img');
     detailsModalImg.setAttribute('src', `${details?.image_link[0]}`);
-    const aiInput = document.getElementById('ai-input');
-    aiInput.innerText = `${details.input_output_examples[0].input ? details.input_output_examples[0].input : 'Can you give any example?'}`; 
 
+   /* ========= AI input and Output ======== */
+    const aiInput = document.getElementById('ai-input');
     const aiOutput = document.getElementById('ai-output');
+    aiInput.innerText = `${details.input_output_examples[0].input ? details.input_output_examples[0].input : 'Can you give any example?'}`; 
     aiOutput.innerText = `${details.input_output_examples[0].output ? details.input_output_examples[0].output : 'No! Not Yet! Take a break!!!'}`; 
+
+    /* ========= Pricing ======== */
+    const basicPlanPrice = document.getElementById('basic-price');
+    const proPlanPrice = document.getElementById('pro-price');
+    const enterprisePlanPrice = document.getElementById('enterprise-price');
+
+    basicPlanPrice.innerHTML = `${details.pricing[0].price === 'No cost'  ? 'Free Of<br> Cost/' : details.pricing[0].price}`;
+    proPlanPrice.innerHTML = `${details.pricing[1].price === 'No cost'  ? 'Free Of<br> Cost/' : details.pricing[1].price}`;
+    enterprisePlanPrice.innerText = `${details.pricing[2].price.slice(0, 10) ? details.pricing[2].price.slice(0, 10) : 'Free Of Cost/' }`;
 
 
   }
