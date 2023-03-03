@@ -78,7 +78,6 @@
 
 /* ========== Display AI Card details in Modal =========== */
   const displayDetails = details => {
-        console.log(details);
     const modalTitle = document.getElementById('modal-title');
     modalTitle.innerText = `${details?.description}`;
     const detailsModalImg = document.getElementById('modal-img');
@@ -110,20 +109,35 @@
 
    /* ========= Integrations ======== */
    const integrateData = details.integrations;
-   console.log(integrateData);
-   const listcontainer = document.getElementById('int-list-container');
-   listcontainer.innerHTML = " ";
+   const listContainer = document.getElementById('int-list-container');
+   listContainer.innerHTML = " ";
    if(integrateData.length > 0 ){
     integrateData.forEach(int => {
           const newLi = document.createElement('li');
           newLi.innerText = `${int}`;
 
-          listcontainer.appendChild(newLi);
+          listContainer.appendChild(newLi);
     })
    }
 
    else{
-    listcontainer.innerHTML = "No data Found";
+    listContainer.innerHTML = "No data Found";
+   }
+
+
+   /* ========= Accuracy %  ======== */
+   const accuracyButton = document.getElementById('accuracy');
+   const accuracyResult = document.getElementById('accuracy-result');
+   const textValue = details?.accuracy?.score;
+   
+   if(textValue){
+     accuracyButton.classList.remove('d-none');
+     const value = textValue * 100  ;
+     accuracyResult.innerText = value;
+   }
+
+   else{
+    accuracyButton.classList.add('d-none');
    }
 
   }
