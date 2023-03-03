@@ -1,15 +1,28 @@
 
-  const loadAiCards = async(cardsLimited = false ) => {
+  const loadAiCards = async(cardsLimited = false, cardSorting = false ) => {
     const url = `https://openapi.programming-hero.com/api/ai/tools`;
     toggleLoading(true);
     const res = await fetch(url);
     const data = await res.json();
-    displayAiCards(data.data.tools, cardsLimited);
+    displayAiCards(data.data.tools, cardsLimited, cardSorting);
   };
 
-  const displayAiCards = (cardsData , isCardsShowingLimited) => {
+  const displayAiCards = (cardsData , isCardsShowingLimited, sort) => {
     const cardContainer = document.getElementById('card-container');
     cardContainer.innerHTML = " ";
+
+    console.log(cardsData);
+
+    /* ============= Sort AI Card According to date =========== */
+    let allCarsData = cardsData;
+    if(sort){
+      const sorted = cardsData.sort((a, b) => new Date(a.published_in) - new Date(b.published_in));
+       allCarsData = sorted;
+    }
+
+    else{
+      allCarsData = cardsData;
+    }
 
     /* ---------Sort by Date Button showing condition---------- */
     const sortByDateBtn = document.getElementById('sort-btn');
@@ -22,7 +35,7 @@
 
     /* --------- Cards data limit and See more button condition---------- */
     const seeMoreBtn = document.getElementById('see-more-btn');
-    let allCarsData = cardsData;
+   
     if( isCardsShowingLimited !== true){
          allCarsData = cardsData.slice(0, 6);
          seeMoreBtn.classList.remove('d-none');
@@ -153,9 +166,15 @@
     }
  };
 
- /* ===== Spinner Loading Function ===== */
-  const showAllCards = value => {
-    loadAiCards(value);
+ /* ===== Show all Card Function ===== */
+  const showAllCards = (value, value2) => {
+    loadAiCards(value, value2);
+  }
+
+  /* ===== Function for: Sorting AI card according to Date ===== */
+
+  const sortAccordingToDate = (value, value2) => {
+    loadAiCards(value, value2);
   }
 
   /* Initially Function Calling */
