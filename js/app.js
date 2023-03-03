@@ -417,12 +417,19 @@ var allData = {
     })
   };
 
-
+/* ========== Load AI Card details in Modal =========== */
   const loadDetails = async (id) => {
     const detailsUrl = `https://openapi.programming-hero.com/api/ai/tool/${id}`;
     const res = await fetch(detailsUrl);
     const data = await res.json();
-    console.log(data.data);
+    displayDetails(data.data);
+  }
+
+/* ========== Display AI Card details in Modal =========== */
+  const displayDetails = details => {
+        console.log(details);
+    const modalTitle = document.getElementById('modal-title');
+    modalTitle.innerText = `${details?.description}`;
   }
 
  /* ===== Spinner Loading Function ===== */
@@ -440,6 +447,7 @@ var allData = {
   const showAllCards = value => {
     loadAiCards(value);
   }
+
   /* Initially Function Calling */
   loadAiCards()
 
